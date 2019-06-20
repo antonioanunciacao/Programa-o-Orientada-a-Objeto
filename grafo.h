@@ -1,51 +1,34 @@
-#IFNDEF GRAFO_H
-#DEFINE GRAFO_H
+#ifndef GRAFO_H
+#define GRAFO_H
 
 #include <iostream>	//Biblioteca Padrão
 #include <fstream>	//Biblioteca Entrada e saida de arquivos
 #include <string>	//Biblioteca de strings
 #include <cstdio>
+#include <climits>
+
+using namespace std;
 
 class Graph {
-		int num_vertex;
-		int num_edges;
-		int** matrix_adjacency;
-		int** matrix_weights;
-	
+	private:
+		int num_vertex, num_edges;
+		int **matrix_adjacency, **matrix_weights;	
 	public:
 		Graph();
 		~Graph();
-		bool insert(const edge&);
-		bool remove(const edge&);
-		bool full_verify();
-		bool verify_edge(int, int);
-		bool remove_edge(int, int);
-		void count_edge_vertex();
-		void complete_graph();
-		void print();
-		void inicialize_weight();
-		void Dijkstra(int src);		
+		bool insert();				// Insere arestas existentes em um arquivo de texto
+		bool insert_edge(int, int);	// Insere aresta manualmente
+		bool remove(int, int);		// Remove aresta
+		bool full_verify();			// Verifica Grafo
+		bool verify_edge(int, int);	// Verifica se uma aresta existe
+		void count_edge_vertex();	// Conta arestas e vertices
+		void complete_graph();		// Completa um grafo
+		void print();				// Imprime Grafo
+		void inicialize_weight();	// Inicializa os pesos das arestas
+		// void Dijkstra(int src);		// calcula o menor caminho entre um vertice e outro
+		// int minDistance(int dist[], bool sptSet[])
 };
 
-void menu(int &opcao) {
-	cout << " ******************************************************\n";
-	cout << " * Escolha o que voce quer fazer:                     *\n";
-	cout << " * 1 - Inserir Aresta 								   *\n";
-	cout << " * 2 - Remover Aresta                                 *\n";
-	cout << " * 3 - Busca Aresta                                   *\n";
-	cout << " * 4 - Verificar vertices e Arestas                   *\n";
-	cout << " * 5 - Verificar Grafo                                *\n";
-	cout << " * 6 - Completar Grafo                                *\n";
-	cout << " * 7 - Menor Caminho                                  *\n";
-	cout << " * 8 - Sair                                           *\n";
-	cout << " ******************************************************\n";
-	cout << " Entre com sua opcao: ";
-	cin >> opcao;
-};
+void menu(int&);
 
-
-#ENDIF
-		
-	
-	
-	
+#endif
