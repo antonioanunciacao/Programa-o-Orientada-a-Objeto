@@ -15,6 +15,12 @@ Graph::Graph() {
 	cout << "\n Seu Grafo foi Construido com Sucesso! \n:)" << endl;
 }
 
+Graph::~Graph() {
+	for(int i = 0; i < num_vertex; i++) delete[] matrix_adjacency[i];
+	delete[] matrix_adjacency;
+	cout << "\n Destrutor do Grafo!" << endl;
+}
+
 bool Graph::insert() {
 	FILE* file;
 	file = fopen("grafo.txt", "r");
@@ -92,3 +98,92 @@ void Graph::complete_graph() {
 	else continue;
 }
 
+// Codigo do DIJKSTRA retirado de https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/
+void Graph::Dijkstra(int src) {
+	int minDistance(int dist[], bool sptSet[]) {
+		int min = INT_MAX, min_index; 
+		for (int v = 0; v < num_vertex; v++) 
+			if (sptSet[v] == false && dist[v] <= min)
+				min = dist[v], min_index = v; 
+		return min_index;
+	}
+	
+	int printSolution(int dist[], int n) {
+		printf("Vertex   Distance from Source\n"); 
+		for (int i = 0; i < V; i++) 
+			printf("%d tt %d\n", i, dist[i]); 
+	}
+	
+	int dist[num_vertex];
+	inicialize_weight();
+	
+	bool sptSet[num_vertex];
+	int parent[num_vertex];
+	
+	for(int i = 0; i < num_vertex; i++) {
+		parent[0] = -1;
+		dist[i] = INT_MAX; // parametro da biblioteca <climits>
+		stpSet[i] = false;
+	}
+	
+	dist[src] = 0;
+	for(int count = 0; count < num_vertex - 1; count++) {
+		int u = minDistance(dist, sptSet);
+		sptSet[u] = true;
+		for(int v = 0; v < num_vertex; v++)
+			if(!sptSet[v] && matrix_weights[u][v] && dist[u] + matrix_weights[u][v] < dist[v]) {
+				parent[v] = u;
+			dist[v] = dist[u] + matrix_weights[u][v];
+			}
+	}
+	printSolution(dist, num_vertex, parent);
+	cout << endl;
+	for(int i = 0; i < num_vertex; i++) delete[] matrix_weights[i];
+	delete[] matrix_weights;
+}
+		
+void Graph::print() {
+	count << "\n  ";
+	for(int i = 0; i < num_vertex; i++) cout << " " << i << " ";
+	cout << endl;
+	for(int i = 0; i < num_vertex; i++) {
+		cout << " " << i << " ";
+		for(int j = 0; j < num_vertex; j++) cout << "| " << matrix_adjacency[i][j];
+		cout << endl;
+	}
+}
+
+void Graph::inicialize_weight() {
+	matrix_weights = new int*[num_vertex];
+	for(int i = 0; i < num_vertex; i++) matrix_weights[i] = new int[num_vertex];
+	for(int i = 0; i < num_vertex; i++)
+		for(int j = 0; j < num_vertex; j++) matrix_weights[i][j] = 0;
+	
+	int weight;
+	for(int i = 0; i < num_vertex; i++)
+		for(int j = 0; j < num_vertex; j++)
+			if(matrix_weights[i][j] == 0)
+				if((i!=j) && (matrix_adjacency[i][j] == 1)) {
+					cout << "Entre com o peso para a Aresta " << i << " e " << j << endl;
+					cin >> weight;
+					matrix_weights[i][j] = weight;
+					matrix_weights[j][i] = weight;
+				}
+}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
