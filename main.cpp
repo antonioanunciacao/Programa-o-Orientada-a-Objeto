@@ -1,3 +1,14 @@
+/*
+UNIVERSIDADE FEDERAL DE MINAS GERAIS
+ENGENHARIA DE SISTEMAS
+
+IMPLEMENTAÇÃO DE CLASSE PARA OPERAR GRAFOS
+DISCIPLINA:	PROGRAMAÇÃO ORIENTADA A OBJETOS
+PROFESSORA:	Raquel Mini
+AUTORES:	Antonio Carlos da Anunciação	2018019443 
+			Warley França Abreu				2018438098
+*/
+
 #include <iostream>
 #include "Graph.h"
 
@@ -173,6 +184,11 @@ int main(int argc, char *argv[]) {
 			cout << grafo->number_of_component() << endl;
 		}
 		
+		else if( opcao == 50 ) {
+			grafo->save();
+			cout << "\nGrafo salvo no arquivo de texto!\n";
+		}
+		
 		else {
 			cout << "\nOxe! Entre com um numero dentre os das opcoes do Menu!\n"; 
 		}
@@ -184,6 +200,7 @@ int main(int argc, char *argv[]) {
 	//__________________________________________________________________________________
 	//FIM DO PROGRAMA
 	
+	system("pause");
     delete grafo;
     return 0;
 }

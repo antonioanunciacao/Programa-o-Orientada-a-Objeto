@@ -1,3 +1,15 @@
+/*
+UNIVERSIDADE FEDERAL DE MINAS GERAIS
+ENGENHARIA DE SISTEMAS
+
+IMPLEMENTAÇÃO DE CLASSE PARA OPERAR GRAFOS
+DISCIPLINA:	PROGRAMAÇÃO ORIENTADA A OBJETOS
+PROFESSORA:	Raquel Mini
+AUTORES:	Antonio Carlos da Anunciação	2018019443 
+			Warley França Abreu				2018438098
+*/
+
+
 #include "Graph.h"
 using namespace std;
 
@@ -17,6 +29,7 @@ void menu(int &opcao) {
 	cout << " * 11 - Arvore Geradora Minima                          *\n";
 	cout << " * 12 - Caixeiro viajante                               *\n";
 	cout << " * 13 - Numero de componentes                           *\n";
+	cout << " * 50 - Salvar Grafo atual                              *\n";
 	cout << " * 99 - Salvar dados e sair                             *\n";
 	cout << " *******************************************************\n";
 	cout << " Entre com sua opcao: ";
