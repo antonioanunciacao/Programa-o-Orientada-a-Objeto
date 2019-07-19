@@ -5,8 +5,8 @@ ENGENHARIA DE SISTEMAS
 IMPLEMENTAÇÃO DE CLASSE PARA OPERAR GRAFOS
 DISCIPLINA:	PROGRAMAÇÃO ORIENTADA A OBJETOS
 PROFESSORA:	Raquel Mini
-AUTORES:	Antonio Carlos da Anunciação	2018019443 
-			Warley França Abreu				2018438098
+AUTORES:	Antonio Carlos da Anunciação
+			Warley França Abreu
 */
 
 
